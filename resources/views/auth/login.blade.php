@@ -1,73 +1,90 @@
+@php
+    use Illuminate\Support\Facades\Session;
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign In</title>
     @vite('resources/css/app.css')
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
-<body>
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img src="/image/ajii.jpg" alt="Your Company" class="mx-auto h-16 w-auto" />
-            <h2 class="mt-1 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
-        </div>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    {{-- Navbar --}}
+    <nav class="flex items-center justify-between px-6 py-4 bg-gray-900 border-b border-gray-800">
+        <a href="/" class="flex items-center space-x-2">
+            <img src="{{ asset('image/ajii.png') }}" alt="Logo" class="h-10 w-auto">
+            <span class="text-xl font-semibold text-white">Astra Juoku Indonesia</span>
+        </a>
+        <a href="/register"
+            class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition">Register</a>
+    </nav>
+
+    {{-- Content --}}
+    <div class="flex-grow flex items-center justify-center px-6 py-12">
+        <div class="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md">
+
+            {{-- Logo --}}
+            <div class="text-center mb-6">
+                <img src="{{ asset('image/ajii.png') }}" alt="Logo"
+                    class="mx-auto h-16 w-auto rounded-full border border-indigo-500 p-1 shadow-md">
+                <h2 class="mt-4 text-2xl font-bold text-white">Sign in to your account</h2>
+            </div>
+
+            {{-- Alert --}}
             @if (session('success'))
-                <div class="mb-4 rounded-md bg-green-100 p-3 text-green-800">
+                <div class="mb-4 rounded-md bg-green-100 text-green-800 p-3 text-sm text-center">
                     {{ session('success') }}
                 </div>
             @endif
 
             @if (session('error'))
-                <div class="mb-4 rounded-md bg-red-100 p-3 text-red-800">
+                <div class="mb-4 rounded-md bg-red-100 text-red-800 p-3 text-sm text-center">
                     {{ session('error') }}
                 </div>
             @endif
-            <form action="/login" method="POST" class="space-y-6">
+
+            {{-- Form --}}
+            <form action="{{ route('login.process') }}" method="POST" class="space-y-6">
                 @csrf
+
+                {{-- Email --}}
                 <div>
-                    <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
-                    <div class="mt-2">
-                        <input id="email" type="email" name="email" required autocomplete="email"
-                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
-                    </div>
+                    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email address</label>
+                    <input id="email" type="email" name="email" required autocomplete="email"
+                        class="block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 </div>
 
+                {{-- Password --}}
                 <div>
-                    <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
-                        <div class="text-sm">
-                            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot
-                                password?</a>
-                        </div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                        <a href="#" class="text-sm text-indigo-400 hover:text-indigo-300">Forgot password?</a>
                     </div>
-                    <div class="mt-2">
-                        <input id="password" type="password" name="password" required autocomplete="current-password"
-                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
-                    </div>
+                    <input id="password" type="password" name="password" required autocomplete="current-password"
+                        class="block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 </div>
 
-                <div>
-                    <button type="submit"
-                        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
-                        in</button>
-                </div>
+                {{-- Button --}}
+                <button type="submit"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-md transition shadow">
+                    Sign in
+                </button>
             </form>
-            @if (session('error'))
-                <div class="mt-4 text-red-500">{{ session('error') }}</div>
-            @endif
 
-            <p class="mt-10 text-center text-sm/6 text-gray-500">
+            {{-- Footer --}}
+            <p class="mt-8 text-center text-sm text-gray-400">
                 Not a member?
-                <a href="/register" class="font-semibold text-indigo-600 hover:text-indigo-500">Register Now</a>
+                <a href="{{ route('register') }}" class="text-indigo-400 hover:text-indigo-300 font-semibold">Register
+                    Now</a>
             </p>
         </div>
     </div>
+
 </body>
 
 </html>
