@@ -8,6 +8,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+
+    {{-- ⚠️ PENTING: Tambahkan ini PERTAMA UNTUK DARK MODE--}}
+    <script>
+        (function() {
+            if (localStorage.theme === 'dark' ||
+                (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+
     @vite('resources/css/app.css')
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
@@ -20,8 +33,7 @@
             <img src="{{ asset('image/ajii.png') }}" alt="Logo" class="h-10 w-auto">
             <span class="text-xl font-semibold text-white">Astra Juoku Indonesia</span>
         </a>
-        <a href="/register"
-            class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition">Register</a>
+        <a href="/register" class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition">Register</a>
     </nav>
 
     {{-- Content --}}
