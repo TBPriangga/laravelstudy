@@ -1,12 +1,8 @@
 @import 'tailwindcss';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 
-/* Custom theme configuration (optional) */
-@theme {
-  --color-dark-bg: #0f172a;
-  --color-dark-card: #1e293b;
-  --color-dark-text: #f1f5f9;
-}
+/* Tailwind v4 - Dark Mode Configuration */
+@variant dark (&:where(.dark, .dark *));
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

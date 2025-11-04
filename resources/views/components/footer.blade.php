@@ -1,10 +1,10 @@
 <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-    <div class="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+    <div class="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 items-start text-center lg:text-left">
 
         {{-- Brand Section --}}
-        <div class="lg:col-span-2">
+        <div class="col-span-2 lg:col-span-2 text-center lg:text-left">
             <a href="/"
-                class="flex items-center space-x-2 text-2xl font-semibold text-indigo-600 dark:text-gray-100">
+                class="flex items-center justify-center lg:justify-start space-x-2 text-2xl font-semibold text-indigo-600 dark:text-gray-100">
                 <img src="{{ asset('image/ajii.png') }}" alt="Logo" class="w-10 h-10">
                 <span>Astra Juoku Indonesia</span>
             </a>
@@ -14,14 +14,14 @@
             </p>
 
             {{-- Powered by Laravel --}}
-            <div class="mt-6 flex items-center space-x-3">
+            <div class="mt-6 flex items-center justify-center lg:justify-start space-x-3">
                 <img src="{{ asset('image/Laravel.png') }}" alt="Powered by Laravel" class="w-8 h-8 object-contain">
                 <span class="text-gray-600 dark:text-gray-300 text-sm font-medium">Powered by Laravel</span>
             </div>
         </div>
 
         {{-- Navigation --}}
-        <div class="sm:col-span-1">
+        <div class="sm:col-span-1 text-center lg:text-left">
             <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Navigation</h3>
             <ul class="space-y-2 text-gray-500 dark:text-gray-300">
                 <li><a href="#" class="hover:text-indigo-500 transition">Product</a></li>
@@ -33,7 +33,7 @@
         </div>
 
         {{-- Legal --}}
-        <div class="sm:col-span-1">
+        <div class="sm:col-span-1 text-center lg:text-left">
             <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Legal</h3>
             <ul class="space-y-2 text-gray-500 dark:text-gray-300">
                 <li><a href="#" class="hover:text-indigo-500 transition">Terms</a></li>
@@ -43,9 +43,9 @@
         </div>
 
         {{-- Social Media --}}
-        <div class="sm:col-span-1">
+        <div class="col-span-2 sm:col-span-1 text-center lg:text-center">
             <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Follow us</h3>
-            <div class="flex flex-wrap gap-4 text-gray-400 dark:text-gray-500">
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-center text-gray-400 dark:text-gray-500">
                 <a href="https://twitter.com" target="_blank" class="hover:text-indigo-500"><i
                         class="fa-brands fa-x-twitter text-2xl"></i></a>
                 <a href="https://facebook.com" target="_blank" class="hover:text-indigo-500"><i

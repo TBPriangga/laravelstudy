@@ -44,6 +44,9 @@ Route::post('/register', [AuthController::class, 'processRegister'])->name('regi
 // Form login
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'processLogin'])->name('login.process');
+Route::get('/login-test', function () {
+    return view('auth.login-test');
+});
 
 Route::get('/home', function () {
     return view('home');
